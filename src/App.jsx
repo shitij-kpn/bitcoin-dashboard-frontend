@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import Table from "./components/Table";
 
 import { useEffect, useState } from "react";
-import formateData from "./utils/formatData";
+import formatData from "./utils/formatData";
 import { useDarkMode } from "./utils/useDarkMode";
 
 import io from "socket.io-client";
@@ -16,12 +16,18 @@ function App() {
     socket.on("connect", () => {
       console.log("connected to the socket");
       socket.on("initialData", (res) => {
-        setData(formateData(res.data.maindata));
+        setData(formatData(res.data.maindata));
       });
     });
     return () => {
       socket.disconnect();
     };
+  }, []);
+
+  useEffect(() => {
+    socket.on("newData", (res) => {
+      setData(formatData(res.data));
+    });
   }, []);
 
   return (

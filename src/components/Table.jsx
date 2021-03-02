@@ -1,10 +1,8 @@
-import { useEffect, useMemo } from "react";
-
-import formatData from "../utils/formatData";
+import { useMemo } from "react";
 
 import { useTable } from "react-table";
 
-const Table = ({ socket, initialData }) => {
+const Table = ({ initialData }) => {
   const data = useMemo(() => initialData, [initialData]);
 
   const columns = useMemo(
@@ -44,12 +42,6 @@ const Table = ({ socket, initialData }) => {
     rows,
     prepareRow,
   } = useTable({ columns, data });
-
-  useEffect(() => {
-    socket.on("newData", (res) => {
-      console.log(formatData(res.data));
-    });
-  }, [socket]);
 
   return (
     <table
