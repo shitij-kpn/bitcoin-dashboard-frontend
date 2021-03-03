@@ -14,7 +14,7 @@ const Header = ({ socket, mode, setMode }) => {
   }, [socket]);
   return (
     <header className="dark:bg-gray-800 dark:text-white bg-gray-100 text-gray-800 pt-4 px-2 shadow-md">
-      <ul className="flex flex-col lg:flex-row justify-between items-center">
+      <ul className="flex flex-col  lg:flex-row justify-between items-center">
         <li className="p-2 ml-4 flex-auto">
           <div>
             <div>
