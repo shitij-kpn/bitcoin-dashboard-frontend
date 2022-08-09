@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     socket.on("connect", () => {
       console.log("connected to the socket");
-      socket.on("initialData", (res) => {
+      socket.on("initial data", (res) => {
         setData(formatData(res.data.maindata));
       });
     });
